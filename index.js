@@ -105,11 +105,19 @@ function calculateTotal (){
 const finalCost = phoneCount*1219 + caseCount*59;
  var finalCharge = parseInt(finalCost);
 document.getElementById('totalBill').innerText = '$'+ finalCharge;
-var newVat = document.getElementById('tax').innerText = '$'+ finalCharge*(15/100);
 
-var NewTax = parseInt(newVat.value);
-var finalBill = NewTax + finalCharge;
+var taxCount = Math.round(finalCharge*(15/100));
+ document.getElementById('tax').innerText = '$'+taxCount;
 
-document.getElementById('final-costing').innerText =finalBill;
+
+
+
+var finalBill = taxCount + finalCharge;
+
+
+
+console.log(finalBill);
+
+document.getElementById('final').innerText =finalBill;
 
 }
