@@ -21,6 +21,39 @@ document.getElementById('case-decrease').addEventListener('click',function(){
 });
 
 
+//phone --
+document.getElementById('phone-decrease').addEventListener('click',function(){
+
+// const phoneInput = document.getElementById('phone-count');
+//    const phoneCount = parseInt(phoneInput.value);
+//     const phoneNewCount = phoneCount - 1;
+//      phoneInput.value = phoneNewCount
+//     const phoneTotal = phoneNewCount * 1219;
+//     document.getElementById('phone-total').innerText='$'+phoneTotal;
+
+autoMobile(false);
+
+});
+
+
+// phone ++
+
+document.getElementById('phone-increase').addEventListener('click',function(){
+
+    // const phoneInput = document.getElementById('phone-count');
+    //    const phoneCount = parseInt(phoneInput.value);
+    //     const phoneNewCount = phoneCount + 1;
+    //      phoneInput.value = phoneNewCount
+    //     const phoneTotal = phoneNewCount * 1219;
+    //     document.getElementById('phone-total').innerText='$'+phoneTotal;
+
+    autoMobile(true)
+    
+    });
+
+
+
+
 function autoMation (IsIncrease){
             const caseInput = document.getElementById('case-count');
             const caseCount = parseInt(caseInput.value);
@@ -38,4 +71,45 @@ function autoMation (IsIncrease){
     caseInput.value = caseNewCount
     const caseTotal = caseNewCount * 59;
     document.getElementById('case-total').innerText='$'+caseTotal;
+    calculateTotal ();
+}
+
+
+function autoMobile (IsIncrease){
+    const phoneInput = document.getElementById('phone-count');
+    const phoneCount = parseInt(phoneInput.value);
+
+    let phoneNewCount = phoneCount;
+if ( IsIncrease== true){
+    phoneNewCount = phoneCount +1
+}
+if (IsIncrease == false && phoneCount>0){
+    phoneNewCount = phoneCount -1 ;
+}
+
+  phoneInput.value = phoneNewCount
+ const phoneTotal = phoneNewCount * 1219;
+ document.getElementById('phone-total').innerText='$'+phoneTotal;
+ calculateTotal ();
+}
+
+// total cost calculation//
+
+function calculateTotal (){
+    const phoneInput = document.getElementById('phone-count');
+    const phoneCount = parseInt(phoneInput.value);
+
+    const caseInput = document.getElementById('case-count');
+    const caseCount = parseInt(caseInput.value);
+
+const finalCost = phoneCount*1219 + caseCount*59;
+ var finalCharge = parseInt(finalCost);
+document.getElementById('totalBill').innerText = '$'+ finalCharge;
+var newVat = document.getElementById('tax').innerText = '$'+ finalCharge*(15/100);
+
+var NewTax = parseInt(newVat.value);
+var finalBill = NewTax + finalCharge;
+
+document.getElementById('final-costing').innerText =finalBill;
+
 }
